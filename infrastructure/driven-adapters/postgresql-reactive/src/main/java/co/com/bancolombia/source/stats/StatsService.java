@@ -13,7 +13,7 @@ public class StatsService implements StatsSource {
     private final StatsRepository repository;
 
     public Mono<Stats> consultStatistics() {
-        return repository.findAll().elementAt(0)
+        return repository.findFirstElement()
                 .map(statsDTO -> new Stats(statsDTO.countClueFound(), statsDTO.countClueNoFound()));
     }
 

@@ -7,10 +7,6 @@ spring:
     base-path: /
   devtools:
     add-properties: false
-  r2dbc:
-    url: r2dbc:postgresql://localhost:5432/ancient-artifacts
-    username: postgres
-    password: admin
 
 logging:
   level:
