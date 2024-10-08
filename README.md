@@ -44,7 +44,7 @@ acceder desde cualquier lugar del mundo mediaval fantástico.
 sobre el artefacto, se retorna un HTTP 200-OK; en caso contrario, un 403-Forbidden.
 
 #### Puede hacer uso del siguiente CURL, desde cualquier lugar del mundo fantástico
-curl --location 'ENTPOINTAWS/clue/' \
+curl --location 'http://18.116.85.211/clue/' \
 --header 'Content-Type: application/json' \
 --data '{"manuscript": ["RTHGQW","áR%%W%","áARWRR","áEWRAL","áGSILE","AAAADS"]}'
 
@@ -72,7 +72,7 @@ los manuscritos que no contienen pistas
 
 
 #### Puede hacer uso del siguiente CURL, desde cualquier lugar del mundo fantastico
-curl --location 'ENTPOINTAWS:8080/stats'
+curl --location 'http://18.116.85.211/stats'
 
 #### Clonando el Repositorio
 1. Podría clonar este repositorio
