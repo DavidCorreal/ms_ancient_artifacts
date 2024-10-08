@@ -1,0 +1,37 @@
+server:
+  port: 8080
+spring:
+  application:
+    name: ms-ancient-artifacts
+  webflux:
+    base-path: /
+  devtools:
+    add-properties: false
+  r2dbc:
+    url: r2dbc:postgresql://localhost:5432/ancient-artifacts
+    username: postgres
+    password: admin
+
+logging:
+  level:
+    root: INFO
+
+management:
+  health:
+    probes:
+      enabled: true
+  endpoint:
+    health:
+      show-details: ALWAYS
+      enabled: true
+      cache:
+        time-to-live: 10s
+  endpoints:
+    web:
+      base-path: /
+      path-mapping:
+        health: health
+        liveness: liveness
+        readiness: readiness
+      exposure:
+        include: health, liveness, readiness, metrics

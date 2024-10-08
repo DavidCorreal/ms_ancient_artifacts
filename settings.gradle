@@ -1,0 +1,16 @@
+rootProject.name = 'ms_ancient_artifacts'
+
+include ':app-service'
+project(':app-service').projectDir = file('./applications/app-service')
+
+include ':model'
+project(':model').projectDir = file('./domain/model')
+
+include ':usecase'
+project(':usecase').projectDir = file('./domain/usecase')
+
+include ':reactive-web'
+project(':reactive-web').projectDir = file('./infrastructure/entry-points/reactive-web')
+
+include ':postgresql-reactive'
+project(':postgresql-reactive').projectDir = file('./infrastructure/driven-adapters/postgresql-reactive')

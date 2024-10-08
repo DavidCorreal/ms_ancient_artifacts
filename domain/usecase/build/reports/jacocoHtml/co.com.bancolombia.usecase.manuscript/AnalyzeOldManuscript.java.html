@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="es"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>AnalyzeOldManuscript.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">usecase</a> &gt; <a href="index.source.html" class="el_package">co.com.bancolombia.usecase.manuscript</a> &gt; <span class="el_source">AnalyzeOldManuscript.java</span></div><h1>AnalyzeOldManuscript.java</h1><pre class="source lang-java linenums">package co.com.bancolombia.usecase.manuscript;
+
+import lombok.experimental.UtilityClass;
+
+import java.util.logging.Logger;
+
+@UtilityClass
+public class AnalyzeOldManuscript {
+
+<span class="fc" id="L10">    private static final Logger logger = Logger.getLogger(AnalyzeOldManuscript.class. getName());</span>
+
+    public boolean containsArtifactClue(String[] manuscript) {
+<span class="fc" id="L13">        int rows = manuscript.length;</span>
+<span class="fc" id="L14">        int cols = manuscript[0].length();</span>
+<span class="fc" id="L15">        int wordLength = 4;</span>
+<span class="fc" id="L16">        boolean containsClue = false;</span>
+
+        // Direcciones en las que se pueden mover (horizontales, verticales, diagonales)
+<span class="fc" id="L19">        int[][] directions = {</span>
+                {0, 1},   // Derecha
+                {1, 0},   // Abajo
+                {1, 1},   // Diagonal hacia abajo a la derecha
+                {1, -1}   // Diagonal hacia abajo a la izquierda
+        };
+
+<span class="fc bfc" id="L26" title="All 2 branches covered.">        for (int i = 0; i &lt; rows; i++) {</span>
+<span class="fc bfc" id="L27" title="All 2 branches covered.">            for (int j = 0; j &lt; cols; j++) {</span>
+<span class="fc bfc" id="L28" title="All 2 branches covered.">                for (int[] direction : directions) {</span>
+<span class="fc" id="L29">                    String word = checkDirection(manuscript, i, j, direction, wordLength);</span>
+<span class="fc bfc" id="L30" title="All 2 branches covered.">                    if (word != null) {</span>
+<span class="fc bfc" id="L31" title="All 2 branches covered.">                        if (analyzeFoundWord(word)){</span>
+<span class="fc" id="L32">                            containsClue = true;</span>
+<span class="fc" id="L33">                            logger.info(&quot;Found Word: &quot; + word);</span>
+                        }
+
+                    }
+                }
+            }
+        }
+<span class="fc" id="L40">        return containsClue;</span>
+    }
+
+    private static boolean analyzeFoundWord(String word) {
+<span class="fc" id="L44">        char firstChar = word.charAt(0);</span>
+<span class="fc bfc" id="L45" title="All 2 branches covered.">        for (int i = 1; i &lt; word.length(); i++) {</span>
+<span class="fc bfc" id="L46" title="All 2 branches covered.">            if (word.charAt(i) != firstChar) {</span>
+<span class="fc" id="L47">                return false;</span>
+            }
+        }
+<span class="fc" id="L50">        return true;</span>
+    }
+
+    private static String checkDirection(String[] manuscript, int row, int col, int[] direction, int length) {
+<span class="fc" id="L54">        StringBuilder sb = new StringBuilder();</span>
+
+<span class="fc" id="L56">        int dRow = direction[0], dCol = direction[1];</span>
+<span class="fc" id="L57">        int rows = manuscript.length;</span>
+<span class="fc" id="L58">        int cols = manuscript[0].length();</span>
+
+<span class="fc bfc" id="L60" title="All 2 branches covered.">        for (int i = 0; i &lt; length; i++) {</span>
+<span class="fc" id="L61">            int newRow = row + i * dRow;</span>
+<span class="fc" id="L62">            int newCol = col + i * dCol;</span>
+
+<span class="pc bpc" id="L64" title="1 of 8 branches missed.">            if (newRow &lt; 0 || newRow &gt;= rows || newCol &lt; 0 || newCol &gt;= cols) {</span>
+<span class="fc" id="L65">                return null;</span>
+            }
+
+<span class="fc" id="L68">            sb.append(manuscript[newRow].charAt(newCol));</span>
+        }
+
+<span class="fc" id="L71">        return sb.toString();</span>
+    }
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.9.202303310957</span></div></body></html>

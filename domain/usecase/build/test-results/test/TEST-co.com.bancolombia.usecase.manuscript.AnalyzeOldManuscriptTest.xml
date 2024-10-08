@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="co.com.bancolombia.usecase.manuscript.AnalyzeOldManuscriptTest" tests="7" skipped="0" failures="0" errors="0" timestamp="2024-10-08T10:36:47" hostname="192.168.1.3" time="0.04">
+  <properties/>
+  <testcase name="shouldAnalyzeOldManuscriptWordsMinusCharsAndFieldsNotFound()" classname="co.com.bancolombia.usecase.manuscript.AnalyzeOldManuscriptTest" time="0.017"/>
+  <testcase name="shouldAnalyzeOldManuscriptByDefault()" classname="co.com.bancolombia.usecase.manuscript.AnalyzeOldManuscriptTest" time="0.013"/>
+  <testcase name="shouldAnalyzeOldManuscriptTwoWords()" classname="co.com.bancolombia.usecase.manuscript.AnalyzeOldManuscriptTest" time="0.001"/>
+  <testcase name="shouldAnalyzeOldManuscriptWordsMoreChars()" classname="co.com.bancolombia.usecase.manuscript.AnalyzeOldManuscriptTest" time="0.002"/>
+  <testcase name="shouldAnalyzeOldManuscriptWordsMinusCharsAndFields()" classname="co.com.bancolombia.usecase.manuscript.AnalyzeOldManuscriptTest" time="0.001"/>
+  <testcase name="shouldAnalyzeOldManuscriptWordsMoreCharsAndFields()" classname="co.com.bancolombia.usecase.manuscript.AnalyzeOldManuscriptTest" time="0.003"/>
+  <testcase name="shouldAnalyzeOldManuscriptWordsNotFound()" classname="co.com.bancolombia.usecase.manuscript.AnalyzeOldManuscriptTest" time="0.0"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[oct. 08, 2024 5:36:47 A. M. co.com.bancolombia.usecase.manuscript.AnalyzeOldManuscript containsArtifactClue
+INFORMACIÓN: Found Word: RRRR
+oct. 08, 2024 5:36:47 A. M. co.com.bancolombia.usecase.manuscript.AnalyzeOldManuscript containsArtifactClue
+INFORMACIÓN: Found Word: RRRR
+oct. 08, 2024 5:36:47 A. M. co.com.bancolombia.usecase.manuscript.AnalyzeOldManuscript containsArtifactClue
+INFORMACIÓN: Found Word: PPPP
+oct. 08, 2024 5:36:47 A. M. co.com.bancolombia.usecase.manuscript.AnalyzeOldManuscript containsArtifactClue
+INFORMACIÓN: Found Word: XXXX
+oct. 08, 2024 5:36:47 A. M. co.com.bancolombia.usecase.manuscript.AnalyzeOldManuscript containsArtifactClue
+INFORMACIÓN: Found Word: AAAA
+oct. 08, 2024 5:36:47 A. M. co.com.bancolombia.usecase.manuscript.AnalyzeOldManuscript containsArtifactClue
+INFORMACIÓN: Found Word: AAAA
+oct. 08, 2024 5:36:47 A. M. co.com.bancolombia.usecase.manuscript.AnalyzeOldManuscript containsArtifactClue
+INFORMACIÓN: Found Word: SSSS
+oct. 08, 2024 5:36:47 A. M. co.com.bancolombia.usecase.manuscript.AnalyzeOldManuscript containsArtifactClue
+INFORMACIÓN: Found Word: XXXX
+oct. 08, 2024 5:36:47 A. M. co.com.bancolombia.usecase.manuscript.AnalyzeOldManuscript containsArtifactClue
+INFORMACIÓN: Found Word: AAAA
+oct. 08, 2024 5:36:47 A. M. co.com.bancolombia.usecase.manuscript.AnalyzeOldManuscript containsArtifactClue
+INFORMACIÓN: Found Word: AAAA
+oct. 08, 2024 5:36:47 A. M. co.com.bancolombia.usecase.manuscript.AnalyzeOldManuscript containsArtifactClue
+INFORMACIÓN: Found Word: AAAA
+oct. 08, 2024 5:36:47 A. M. co.com.bancolombia.usecase.manuscript.AnalyzeOldManuscript containsArtifactClue
+INFORMACIÓN: Found Word: AAAA
+oct. 08, 2024 5:36:47 A. M. co.com.bancolombia.usecase.manuscript.AnalyzeOldManuscript containsArtifactClue
+INFORMACIÓN: Found Word: IIII
+oct. 08, 2024 5:36:47 A. M. co.com.bancolombia.usecase.manuscript.AnalyzeOldManuscript containsArtifactClue
+INFORMACIÓN: Found Word: BBBB
+]]></system-err>
+</testsuite>
