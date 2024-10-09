@@ -3,7 +3,7 @@ apply plugin: 'org.springframework.boot'
 dependencies {
     implementation project(':model')
     implementation project(':usecase')
-    implementation project(':postgresql-reactive')
+    implementation project(':h2-reactive')
     implementation project(':reactive-web')
     implementation 'org.springframework.boot:spring-boot-starter'
 	implementation 'org.springframework.boot:spring-boot-starter-webflux'
