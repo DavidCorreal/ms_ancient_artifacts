@@ -2,22 +2,26 @@ package co.com.bancolombia.source.stats;
 
 
 import co.com.bancolombia.source.stats.dto.StatsDTO;
-import lombok.RequiredArgsConstructor;
-import org.springframework.data.r2dbc.core.R2dbcEntityTemplate;
-import org.springframework.data.relational.core.query.Criteria;
-import org.springframework.data.relational.core.query.Query;
+import org.springframework.data.r2dbc.repository.Query;
+import org.springframework.data.repository.reactive.ReactiveCrudRepository;
 import org.springframework.stereotype.Repository;
 import reactor.core.publisher.Mono;
 
 @Repository
-@RequiredArgsConstructor
-public class StatsRepository {
+public interface StatsRepository extends ReactiveCrudRepository<StatsDTO, Long> {
 
-    private final R2dbcEntityTemplate r2dbcEntityTemplate;
+    /*@Modifying
+    @Query("UPDATE stats SET countClueFound = countClueFound + 1 WHERE id = :id")
+    Mono<Integer> incrementCountClueFound(@Param("id") Long id);
 
-    public Mono<StatsDTO> findFirstElement() {
-        return r2dbcEntityTemplate.selectOne(Query.query(Criteria.where("id").is(1)),
-                StatsDTO.class);
-    }
+    @Modifying
+    @Query("UPDATE stats SET countClueNoFound = countClueNoFound + 1 WHERE id = :id")
+    Mono<Integer> incrementCountClueNoFound(@Param("id") Long id);*/
+
+    @Query("SELECT " +
+            "    SUM(CASE WHEN clue_found = TRUE THEN 1 ELSE 0 END) AS countClueFound," +
+            "    COUNT(CASE WHEN clue_found = FALSE THEN 1 END) AS countClueNoFound " +
+            "FROM manuscripts")
+    Mono<StatsDTO> consultStats();
 
 }

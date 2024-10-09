@@ -11,15 +11,16 @@ import reactor.core.publisher.Mono;
 @RequiredArgsConstructor
 public class ManuscriptService implements ManuscriptSource {
 
-    private final ManuscriptRepository repository;
+    private final ManuscriptRepository manuscriptRepository;
 
+    @Override
     public Mono<Void> save(Manuscript manuscript) {
         var manuscriptEntity = ManuscriptDTO.builder()
                 .manuscript(manuscript.manuscript())
                 .clueFound(manuscript.clueFound())
                 .build();
 
-        return repository.save(manuscriptEntity).then();
+        return manuscriptRepository.save(manuscriptEntity).then();
     }
 
 }

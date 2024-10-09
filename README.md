@@ -85,3 +85,34 @@ curl --location 'localhost:8080/stats'
 
 ### Ejemplo consulta
 ![img_2.png](img_2.png)
+
+# Pruebas de Performance
+
+Al inicio del proyecto se habia planeado utilizar una base de datos PostgreSQL, la ejecución dió
+como resultado un poco mas de 2 millones de muestras en 5 minutos, pero con una tasa de error del 20%, los errores 
+eran relacionados con la base de datos, tenia muchos clientes.
+
+Por esta razón se decidió implementar una base de datos en memoria como H2, la unica contra es que estos datos
+al bajar el microservicio se pierden y utilizan la memoria del microservicio que se esté utilizando, como se puede ver en la siguiente imagen donde Java ya tenia ocupado 4GB de memoria con los datos de las pruebas de performance.
+
+![img_3.png](img_3.png)
+
+Aun así se obtuvieron buenos resultados y con una tasa de error del 0%, superando 6 millones de muestras en 4 minutos y
+mas de 200 mil transacciones por segundo, ejecuando esto desde el computador en local. esto para el entpoint de almacenar y buscar la pista POST::/Clue/
+
+![img_5.png](img_5.png)
+
+Para el endpoint GET::/Stats, se decidió que se consultara en la base de datos por medio de un conteo a los datos que se encontraron pistas
+y a los que no se encontraron pistas, antes se habia definido con PostgreSQL manejar un proceso almacenado para que actualizara el registro de las estadisticas
+esto llevó a que la base de datos se saturara un poco, y tambien para no afectar o darle mas carga al endpoint de Clues y en un ambiente real se necesita que Clues tenga mas performance que el endpoint de estadisticas,
+el resultado unamuestra de mas de 6 millones 500 mil, 0% de error, teniendo encuenta que cada consulta estaba analizando un poco mas de 6 millones de registros / 4GB de datos
+
+![img_4.png](img_4.png)
+
+Debo recordar que esto es en un ambiente local, muy probablemente en un ambiente de EKS, con balanceador de carga, y una configuración de subir recursoss horizontalemente y verticalmente se podrian tener muy buenos resultados 
+aún así usando una base de datos postgres si es que el sabio requiere almacenar estos datos por mucho mas tiempo.
+
+A futuro se podría mejorar el performance usando una caché centralizada como Redis, para que retenga la información por determinado tiempo y en tiempos de descanso del servidor o en determinado tiempo enviar a guardar por bloques a la base de datos como Batch Processor.
+
+
+

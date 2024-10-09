@@ -7,6 +7,15 @@ spring:
     base-path: /
   devtools:
     add-properties: false
+  r2dbc:
+    url: r2dbc:h2:mem:///artifacts
+    username: admin
+    password:
+    h2:
+      console:
+        enabled: true
+        path: /h2-console
+    initialization-mode: always
 
 logging:
   level:
